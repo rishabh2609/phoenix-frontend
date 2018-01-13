@@ -9,25 +9,46 @@
 </head>
 <body>
 <ul id="slide-out" class="side-nav fixed">
-  <li>
-  	<div class="user-view">
-    	<div class="background">
-      	<img src="images/cover_photo.jpg">
-    	</div>
-    	<a href="#!user"><img class="circle" src="images/profile_pic.png"></a>
-    	<a href="#!name"><span class="white-text name">John Doe</span></a>
-    	<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-  	</div>
-	</li>
-  <li><a class="waves-effect" href="#!">Host an event</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="waves-effect" href="#!">Attend an event</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="waves-effect" href="#!">Previous events</a></li>
-  <div class="log-out center">
-  	<a href="index.html" id="log-out-btn">Log out</a>
+  <div class="container center">
+  	<li><img src="images/profile_pic.png" class="profile_pic"></li>
+  	<li><h4>Rishabh Chanana</h4></li>
+  	<li><p>rishabhchanana97@gmail.com</p></li>
+  	<li><a href="#" class="waves waves-effect">Host an Event</a></li>
+  	<li><a href="#" class="waves waves-effect">My Events</a></li>
   </div>
 </ul>
+
+<main>
+	<h1>Events</h1>
+		<div class="row">
+			<div class="col s4">
+				<div class="card z-depth-4">
+					<div class="card-image">
+						<img src="images/cover_photo.jpg">
+						<span class="card-title">Event Title</span>
+					</div>
+					<div class="card-content">
+						<p class="truncate">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation
+						</p>
+					</div>
+					<ul class="tabs mark-yourself">
+						<input type="hidden" />
+						<li class="tab col s6"><a href="#test1" id="interested-btn">interested</a></li>
+						<li class="tab col s6"><a href="#test2" id="going-btn">going</a></li>
+      		</ul>
+				</div>
+			</div>
+		</div>
+</main>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red waves-effect waves-light" href="index.html">
+    <i class="large material-icons">exit_to_app</i>
+  </a>
+</div>
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/hammer.min.js"></script>

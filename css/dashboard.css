@@ -26,20 +26,19 @@ body {
   margin: 0px;
   width: 100%;
   overflow-x: hidden;
-  background-image: url(../images/background.jpg);
-  background-size: cover;
 }
 
-.log-out {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 110px;
-  text-align: center !important;
-  padding: 10px;
-  padding-left: 100px;
+main {
+  margin-left: 300px;
+  padding: 50px;
 }
 
-#log-out-btn {
-  text-align: center;
+.profile_pic {
+  max-width: 80%;
+  margin: 20px 0px -20px 0px;
+  border-radius: 50%;
+}
+
+.indicator {
+  display: none !important;
 }
