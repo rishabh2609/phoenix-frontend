@@ -83,7 +83,9 @@ $(document).ready(function() {
 			},
 			function (data , status) {
 				console.log(data);
-				$('#action-for-event').slideUp(200);
+				// $('#action-for-event').slideUp(200);
+					$('#going').slideUp(200);
+				$('#interested').slideUp(200);
 			});
 	});
 
