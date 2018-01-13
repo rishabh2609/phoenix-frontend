@@ -8,12 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
 </head>
 <body>
+
+<a href="#" data-activates="slide-out" class="button-collapse btn-floating btn-large white z-depth-0"><i class="material-icons black-text">menu</i></a>
 <ul id="slide-out" class="side-nav fixed">
   <div class="container center">
   	<li><img src="images/profile_pic.png" class="profile_pic"></li>
   	<li><h4>Rishabh Chanana</h4></li>
   	<li><p>rishabhchanana97@gmail.com</p></li>
-  	<li><a href="#" class="waves waves-effect">Host an Event</a></li>
+  	<li><a href="#" class="waves waves-effect" id="create-event-open-modal-btn">Host an Event</a></li>
   	<li><a href="#" class="waves waves-effect">My Events</a></li>
   </div>
 </ul>
@@ -21,26 +23,40 @@
 <main>
 	<h1>Events</h1>
 		<div class="row">
-			<div class="col s4">
-				<div class="card z-depth-4">
+			<div class="col s12 m6">
+				<div class="card z-depth-4 event-card">
 					<div class="card-image">
 						<img src="images/cover_photo.jpg">
-						<span class="card-title">Event Title</span>
+						<span class="card-title"><h1>Event Title</h1></span>
 					</div>
 					<div class="card-content">
-						<p class="truncate">
+						<p class="flow-text">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 							quis nostrud exercitation
 						</p>
 					</div>
-					<ul class="tabs mark-yourself">
-						<input type="hidden" />
-						<li class="tab col s6"><a href="#test1" id="interested-btn">interested</a></li>
-						<li class="tab col s6"><a href="#test2" id="going-btn">going</a></li>
-      		</ul>
+					
 				</div>
 			</div>
+
+			<div class="col s12 m6">
+				<div class="card z-depth-4 event-card">
+					<div class="card-image">
+						<img src="images/cover_photo.jpg">
+						<span class="card-title"><h1>Event Title</h1></span>
+					</div>
+					<div class="card-content">
+						<p class="flow-text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation
+						</p>
+					</div>
+					
+				</div>
+			</div>
+			
 		</div>
 </main>
 
@@ -51,7 +67,7 @@
 				<div class="card-image">
 					<img src="images/cover_photo.jpg"/>
 					<span class="card-title">
-						Event title
+						<h1>Event title</h1>
 					</span>
 				</div>
 				<div class="card-content">
@@ -132,24 +148,54 @@
 			<input id="create-event-name" type="text" class="validate">
       <label for="create-event-name">Event Name</label>
 		</div>
+
+		<div class="input-field">
+      <textarea id="create-event-descp" class="materialize-textarea"></textarea>
+      <label for="create-event-descp">Event description</label>
+    </div>
+
 		<div class="row">
 			<div class="col s6 input-feild">
-				<input id="create-event-start-date" type="date" class="validate">
+				<input id="create-event-start-date" type="date" class="datepicker" placeholder="dd/mm/yyyy">
       	<label for="create-event-start-date">Start Date</label>
 			</div>
 			<div class="col s6 input-feild">
-				<input id="create-event-end-date" type="date" class="validate">
+				<input id="create-event-end-date" type="date" class="datepicker" placeholder="dd/mm/yyyy">
       	<label for="create-event-end-date">End Date</label>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col s6">
+				<div class="file-field input-field">
+		      <div class="btn">
+		        <span>File</span>
+		        <input type="file" id="inputFile">
+		        <input type="hidden" id="inputFileConvert">
+		      </div>
+		      <div class="file-path-wrapper">
+		        <input class="file-path validate" type="text" placeholder="Image url">
+		      </div>
+		    </div>
+			</div>
+			<div class="col s6 input-field">
+				<input id="create-event-seats" type="number" class="validate">
+      	<label for="create-event-seats">Total seats</label>
+			</div>
+		</div>
+
+		<div class="">
+			<h4>Venue:</h4>
+		</div>
+		
 	</div>
 	<div class="modal-footer">
-    <a href="#!" class="waves-effect waves-green btn-flat">HOST THIS EVENT</a>
+    <a href="#!" class="waves-effect waves-green btn" id="create-event-btn">HOST THIS EVENT</a>
   </div>
 </div>
 
 <div class="fixed-action-btn">
-  <a class="btn-floating btn-large red waves-effect waves-light" href="index.html">
+  <a class="btn-floating btn-large red waves-effect waves-light" id="log-out-btn">
     <i class="large material-icons">exit_to_app</i>
   </a>
 </div>
@@ -158,5 +204,6 @@
 <script src="js/hammer.min.js"></script>
 <script src="js/materialize.min.js"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/create_event.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyObqb-02KPNPd8MdjFvOCEVyPGs0G9Ok&callback=myMap"></script>
 </html>
