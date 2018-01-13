@@ -1,20 +1,55 @@
-function myMap() {
-	var mapProp = {
-	  center: new google.maps.LatLng(51.508742,-0.120850),
-	  zoom: 5,
-	};
-	var map = new google.maps.Map(document.getElementById("google-map"), mapProp);
+if(typeof(Storage) !== 'undefined') {
+	if(localStorage.getItem('token')) {
+		$('#username').text(localStorage.getItem('name'));
+		$('#user-email').text(localStorage.getItem('email'));
+	} else{
+		window.location.assign('index.html');
+	}
+} else {
+	document.write('Sorry cannot open app!');
 }
+
 $(document).ready(function() {
+	Materialize.toast('Logged in!', 3000, 'rounded')
 	$.post("http://192.168.31.169:3100/api/event/live", 
 		{
 			token: localStorage.getItem('token')
 		}
 		, 
 	function(data, status) {
-			console.dir(data);
+			console.dir(data.events);
+			var lastRow;
+			data.events.forEach(function(val, index) {
+				var obj = add_live_event(val.name, val.description , val._id);
+				if(index % 2 === 0) {
+					lastRow = make_row();
+					$('#live-events-cont').append(lastRow);
+				}
+				$(lastRow).append(obj);
+				
+			});
+			$('.event-card').click(function() {
+				$('#events-modal').modal('open');
+				$.post("http://192.168.31.169:3100/api/event/event", 
+					{	
+						token: localStorage.getItem('token'),
+						eventID : this.parentElement.children[0].value
+					}, function (data1 , status1) {
+						console.dir(data1.body.event);
+						$('#modal-event-title').text(data1.body.event.name);
+						$('#modal-event-descp').text(data1.body.event.description);
+						$('#modal-total-seat').text(data1.body.event.totalSeats);
+						$('#hidden-event-id').val(data1.body.event._id);
+						// $('#modal-mobile-number').val(data1.body.event._id);
+						var ds = new Date(data1.body.event.sDate);
+						var de = new Date(data1.body.event.eDate);
+						 var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+						$('#modal-event-dates').text(ds.getDate() + " " + mL[ds.getMonth()] + "-" + de.getDate() + " " + mL[de.getMonth()]);
+					});
+			});
 		}
 	);
+
 	$('#interested-btn').click(function() {
 		console.dir(this.parentElement.parentElement);
 	});
@@ -38,4 +73,66 @@ $(document).ready(function() {
     selectMonths: true,
     selectYears: 15
   });
+
+	$('#interested').click(function () {
+		console.log($('#hidden-event-id').val());
+		$.post("http://192.168.31.169:3100/api/event/interest",
+			{
+					token: localStorage.getItem('token'),
+					eventID: $('#hidden-event-id').val()
+			},
+			function (data , status) {
+				console.log(data);
+				$('#action-for-event').slideUp(200);
+			});
+	});
+
+
+	$('#going').click(function () {
+		console.log($('#hidden-event-id').val());
+		$.post("http://192.168.31.169:3100/api/event/going",
+			{
+					token: localStorage.getItem('token'),
+					eventID: $('#hidden-event-id').val()
+			},
+			function (data , status) {
+				console.log(data);
+				$('#going').slideUp(200);
+				$('#interested').slideUp(200);
+			});
+	});
+	$('#feedback-model-card').slideUp(200);
+	$('#feedback').click(function () {
+		$('#feedback-model-card').slideDown(200);
+	})
+
+	$('#feedback-send').click(function () {
+		$.post("http://192.168.31.169:3100/api/feedback/create", 
+		{
+			token: localStorage.getItem('token'),
+			eventID: $('#hidden-event-id').val(),
+			desc: $('#feedback-textarea').val()
+		},
+		function(data , status) {
+			console.log(data);
+			$('#feedback-model-card').slideUp(200);
+		})
+	});
+
+
 });
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Allow Location");
+    }
+}
+function showPosition(position) {
+	var mapProp = {
+	  center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+	  zoom: 5,
+	};
+	var map = new google.maps.Map(document.getElementById("google-map"), mapProp);
+}

@@ -13,8 +13,8 @@
 <ul id="slide-out" class="side-nav fixed">
   <div class="container center">
   	<li><img src="images/profile_pic.png" class="profile_pic"></li>
-  	<li><h4>Rishabh Chanana</h4></li>
-  	<li><p>rishabhchanana97@gmail.com</p></li>
+  	<li><h4 id="username">Rishabh Chanana</h4></li>
+  	<li><p id="user-email">rishabhchanana97@gmail.com</p></li>
   	<li><a href="#" class="waves waves-effect" id="create-event-open-modal-btn">Host an Event</a></li>
   	<li><a href="#" class="waves waves-effect">My Events</a></li>
   </div>
@@ -22,56 +22,22 @@
 
 <main>
 	<h1>Events</h1>
-		<div class="row">
-			<div class="col s12 m6">
-				<div class="card z-depth-4 event-card">
-					<div class="card-image">
-						<img src="images/cover_photo.jpg">
-						<span class="card-title"><h1>Event Title</h1></span>
-					</div>
-					<div class="card-content">
-						<p class="flow-text">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation
-						</p>
-					</div>
-					
-				</div>
-			</div>
-
-			<div class="col s12 m6">
-				<div class="card z-depth-4 event-card">
-					<div class="card-image">
-						<img src="images/cover_photo.jpg">
-						<span class="card-title"><h1>Event Title</h1></span>
-					</div>
-					<div class="card-content">
-						<p class="flow-text">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation
-						</p>
-					</div>
-					
-				</div>
-			</div>
-			
+		<div id="live-events-cont">
 		</div>
 </main>
 
 <div class="modal" id="events-modal">
 	<div class="modal-content">
-		
+		<input type="hidden" id="hidden-event-id">
 			<div class="card z-depth-4">
 				<div class="card-image">
 					<img src="images/cover_photo.jpg"/>
 					<span class="card-title">
-						<h1>Event title</h1>
+						<h1 id="modal-event-title">Event title</h1>
 					</span>
 				</div>
 				<div class="card-content">
-					<p>
+					<p id="modal-event-descp">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -84,7 +50,7 @@
 					<div class="row">
 						<div class="col s4 center">
 							<i class="material-icons medium">date_range</i>
-							<p>12th Jan - 18th Jan</p>
+							<p id="modal-event-dates">12th Jan - 18th Jan</p>
 						</div>
 						<div class="col s4 center">
 							<i class="material-icons medium">location_on</i>
@@ -92,7 +58,7 @@
 						</div>
 						<div class="col s4 center">
 							<i class="material-icons medium">contact_phone</i>
-							<p>95456521321</p>
+							<p id="modal-mobile-number">95456521321</p>
 						</div>
 					</div>
 				</div>
@@ -100,14 +66,14 @@
 					<div class="row">
 						<div class="col s4 center">
 							<i class="material-icons medium">event_seat</i>
-							<p>100</p>
+							<p id="modal-total-seat">100</p>
 						</div>
-						<div class="col s4 center">
+					<!-- 	<div class="col s4 center">
 							<i class="material-icons medium">insert_link</i>
 							<p>
 								<a href="#">Link</a>
 							</p>
-						</div>
+						</div> -->
 						<div class="col s4 center">
 							&nbsp;
 						</div>
@@ -127,14 +93,28 @@
 						#Tag2
 					</div>
 				</div>
-				<div class="card-action">
+				<div class="card-action" id="action-for-event">
 					<div class="row">
-						<div class="col s6 center">
-							<a href="#">Interested</a>
+						
+						<div class="col s4 center">
+							<a href="#" id="interested">Interested</a>
 						</div>
-						<div class="col s6 center">
-							<a href="#">Going</a>
+						<div class="col s4 center">
+							<a href="#" id="going" >Going</a>
 						</div>
+						<div class="col s4 center">
+							<a href="#" id="feedback" >Feedback</a>
+						</div>
+					</div>
+
+					<div class="row" id="feedback-model-card">
+						<div class="col s10 center">
+							<textarea id="feedback-textarea" placeholder="Feedback" class="materialize-textarea"></textarea>
+						</div>
+						<div class="col s2 center"><br><br>
+							<a href="#" id="feedback-send" >SEND</a>
+						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -186,6 +166,8 @@
 
 		<div class="">
 			<h4>Venue:</h4>
+			<div id="google-map" class="container">
+					</div>
 		</div>
 		
 	</div>
@@ -205,5 +187,6 @@
 <script src="js/materialize.min.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/create_event.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyObqb-02KPNPd8MdjFvOCEVyPGs0G9Ok&callback=myMap"></script>
+<script src="js/add_live_events.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyObqb-02KPNPd8MdjFvOCEVyPGs0G9Ok&callback=getLocation"></script>
 </html>

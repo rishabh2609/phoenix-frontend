@@ -4,6 +4,7 @@ $(document).ready(function() {
 		var des = $('#create-event-descp').val();
 		var sd = $('#create-event-start-date')[0].value;
 		var ed = $('#create-event-end-date')[0].value;
+		var tSe = $('#create-event-seats').val();
 		var inp = document.getElementById("inputFile");
 		var fReader = new FileReader();
 		fReader.readAsDataURL(inp.files[0]);
@@ -17,11 +18,14 @@ $(document).ready(function() {
 			sDate: sd,
 			eDate: ed,
 			desc: des,
-			pic: $('#inputFileConvert').val()
+			pic: $('#inputFileConvert').val(),
+			tSeat: tSe
 		},
 			function(data, status) {
 				console.dir(data);
 			}
 		)
 	});
+
+
 });
