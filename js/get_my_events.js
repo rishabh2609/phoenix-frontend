@@ -17,6 +17,7 @@ function down_csv(obj) {
 		eventID: obj.parentElement.parentElement.children[0].value
 	}, function(data, status) {
 		console.dir(data);
+		window.location.assign("http://192.168.31.220:3000" + data.path);
 	});
 }
 
