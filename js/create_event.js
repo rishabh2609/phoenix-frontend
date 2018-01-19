@@ -6,11 +6,10 @@ $(document).ready(function() {
 		var ed = $('#create-event-end-date')[0].value;
 		var tSe = $('#create-event-seats').val();
 		var inp = document.getElementById("inputFile");
-		var fReader = new FileReader();
-		fReader.readAsDataURL(inp.files[0]);
-		fReader.onloadend = function(event){
-    	$('#inputFileConvert').val(event.target.result);
-		}
+		// var fReader = new FileReader();
+		// fReader.readAsDataURL(inp.files[0]);
+		// fReader.onloadend = function(event){
+    	// $('#inputFileConvert').val(event.target.result);
 		$.post("http://192.168.31.169:3100/api/event/create",
 		{
 			token: localStorage.getItem('token'),
@@ -18,7 +17,7 @@ $(document).ready(function() {
 			sDate: sd,
 			eDate: ed,
 			desc: des,
-			pic: $('#inputFileConvert').val(),
+			// pic: $('#inputFileConvert').val(),
 			tSeat: tSe
 		},
 			function(data, status) {
