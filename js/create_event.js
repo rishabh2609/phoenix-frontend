@@ -1,4 +1,19 @@
 $(document).ready(function() {
+	// $('#create-event-btn').click(function() {
+	// 	var form = $('#create-event-form');
+	// 	console.dir(form);
+	// 	var formData = new FormData(form[0]);
+	// 	console.log(formData);
+	// 		$.ajax({
+	// 			type: "POST",
+	// 			url: "http://192.168.31.169:3100/api/event/create", 
+	// 			data: formData,
+	// 			contentType: false,
+	// 			processData: false
+	// 		});
+ // 		$('#create-event-modal').modal('close');
+	// });
+
 	$('#create-event-btn').click(function() {
 		var n = $('#create-event-name').val();
 		var des = $('#create-event-descp').val();

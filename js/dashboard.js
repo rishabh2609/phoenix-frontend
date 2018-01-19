@@ -103,23 +103,6 @@ $(document).ready(function() {
 				$('#interested').slideUp(200);
 			});
 	});
-	$('#feedback-model-card').slideUp(200);
-	$('#feedback').click(function () {
-		$('#feedback-model-card').slideDown(200);
-	})
-
-	$('#feedback-send').click(function () {
-		$.post("http://192.168.31.169:3100/api/feedback/create", 
-		{
-			token: localStorage.getItem('token'),
-			eventID: $('#hidden-event-id').val(),
-			desc: $('#feedback-textarea').val()
-		},
-		function(data , status) {
-			console.log(data);
-			$('#feedback-model-card').slideUp(200);
-		})
-	});
 
 
 });
