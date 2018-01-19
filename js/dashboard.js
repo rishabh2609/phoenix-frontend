@@ -11,7 +11,7 @@ if(typeof(Storage) !== 'undefined') {
 
 $(document).ready(function() {
 	Materialize.toast('Logged in!', 3000, 'rounded')
-	$.post("http://192.168.31.169:3100/api/event/live", 
+	$.post("http://192.168.31.169:3000/api/event/live", 
 		{
 			token: localStorage.getItem('token')
 		}
@@ -30,7 +30,7 @@ $(document).ready(function() {
 			});
 			$('.event-card').click(function() {
 				$('#events-modal').modal('open');
-				$.post("http://192.168.31.169:3100/api/event/event", 
+				$.post("http://192.168.31.169:3000/api/event/event", 
 					{	
 						token: localStorage.getItem('token'),
 						eventID : this.parentElement.children[0].value
@@ -76,7 +76,7 @@ $(document).ready(function() {
 
 	$('#interested').click(function () {
 		console.log($('#hidden-event-id').val());
-		$.post("http://192.168.31.169:3100/api/event/interest",
+		$.post("http://192.168.31.169:3000/api/event/interest",
 			{
 					token: localStorage.getItem('token'),
 					eventID: $('#hidden-event-id').val()
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 	$('#going').click(function () {
 		console.log($('#hidden-event-id').val());
-		$.post("http://192.168.31.169:3100/api/event/going",
+		$.post("http://192.168.31.169:3000/api/event/going",
 			{
 					token: localStorage.getItem('token'),
 					eventID: $('#hidden-event-id').val()

@@ -13,7 +13,7 @@ $(document).ready(function() {
 		$('#sign-in-card-inputs').slideUp(200);
 		var mail = $('#sign-in-username').val();
 		var pass = $('#sign-in-password').val(); 
-		$.post("http://192.168.31.169:3100/api/user/signin", 
+		$.post("http://192.168.31.169:3000/api/user/signin", 
 		{
 			email: mail,
 			password: pass
@@ -48,8 +48,7 @@ $(document).ready(function() {
         $('#sign-up-btn').show();
         $('#send-otp-btn').hide();
        	otpnumber = Math.floor(1000 + Math.random() * 9000);
-       	console.log(otpnumber);
-       	$.post("http://192.168.31.169:3100/api/sendotp" ,
+       	$.post("http://192.168.31.169:3000/api/sendotp" ,
        	{
            otp: otpnumber,
            mobile: $("#sign-up-mobile-number").val()
@@ -73,7 +72,7 @@ $(document).ready(function() {
                 $('#sign-up-error-msg').text('Passwords do not match');
                 return;
             }
-            $.post("http://192.168.31.169:3100/api/user/signup",
+            $.post("http://192.168.31.169:3000/api/user/signup",
                 {
                     name: username,
                     password: pass,

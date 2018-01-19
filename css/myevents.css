@@ -54,3 +54,7 @@ main {
     padding: 10px;
    }
 }
+
+.graph {
+  max-width: 60%;
+}
