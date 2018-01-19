@@ -31,6 +31,7 @@ function send_feedback(obj) {
 		desc: comment
 	}, function(data, status) {
 		console.dir(data);
+		obj.parentElement.parentElement.parentElement.parentElement.children[2].children[2].children[0].children[0].children[0].value = "";
 	});
 }
 
